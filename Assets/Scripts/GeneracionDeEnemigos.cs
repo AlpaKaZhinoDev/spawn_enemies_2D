@@ -1,18 +1,41 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 public class GeneracionDeEnemigos : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform[] _puntosDeAparicion;
+
+    [SerializeField] private GameObject[] _prefabsEnemigo;
+
+
+    private void Start()
     {
-        
+        StartCoroutine("GenerarEnemigo");
+    } 
+
+    IEnumerator GenerarEnemigo()
+    {   
+        while(true)
+        {
+            Vector3 posicionDeSpawn = SeleccionarPosicionAleatoria();
+
+            Instantiate(_prefabsEnemigo[ElegirEnemigoAleatorio()], posicionDeSpawn, Quaternion.identity);
+
+            yield return new WaitForSeconds(10f);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private int ElegirEnemigoAleatorio()
     {
-        
+        return Random.Range(0, _prefabsEnemigo.Length);
+    }
+
+    private Vector3 SeleccionarPosicionAleatoria()
+    {
+        int puntoAleatorio = Random.Range(0, _puntosDeAparicion.Length);
+
+        return _puntosDeAparicion[puntoAleatorio].transform.position;
     }
 }
