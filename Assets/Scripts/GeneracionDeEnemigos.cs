@@ -7,7 +7,7 @@ public class GeneracionDeEnemigos : MonoBehaviour
 {
     [SerializeField] private Transform[] _puntosDeAparicion;
 
-    [SerializeField] private GameObject[] _prefabsEnemigo;
+    [SerializeField] private MovimientoEnemigos[] _prefabsEnemigo;
 
 
     private void Start()
@@ -21,7 +21,7 @@ public class GeneracionDeEnemigos : MonoBehaviour
         {
             Vector3 posicionDeSpawn = SeleccionarPosicionAleatoria();
 
-            Instantiate(_prefabsEnemigo[ElegirEnemigoAleatorio()], posicionDeSpawn, Quaternion.identity);
+            MovimientoEnemigos enemigo = Instantiate(_prefabsEnemigo[ElegirEnemigoAleatorio()], posicionDeSpawn, Quaternion.identity);
 
             yield return new WaitForSeconds(10f);
         }
