@@ -12,7 +12,7 @@ public class GeneracionDeEnemigos : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("GenerarEnemigo");
+        Invoke("ComenzarCorrutina", 3f);
     } 
 
     IEnumerator GenerarEnemigo()
@@ -25,6 +25,12 @@ public class GeneracionDeEnemigos : MonoBehaviour
 
             yield return new WaitForSeconds(10f);
         }
+    }
+
+
+    private void ComenzarCorrutina()
+    {
+        StartCoroutine("GenerarEnemigo");
     }
 
     private int ElegirEnemigoAleatorio()
