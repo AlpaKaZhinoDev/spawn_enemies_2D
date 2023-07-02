@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 
@@ -10,13 +11,48 @@ public class Personaje : MonoBehaviour
     [SerializeField] private Transform _puntoDeDisparo;
     [SerializeField] private GameObject _prefabBala;
     [SerializeField] private float _tiempoEntreDisparos;
+    [SerializeField] private Rigidbody _rigidbody;
+
+
     private float _tiempoTranscurrido = 5f;
+
+    private Camera _camaraPrincipal;
+
+
+    private void Start()
+    {
+        _camaraPrincipal = Camera.main;
+    }
+
 
     private void Update()
     {
         ActualizarMiPosicion();
         Atacar();
+        MirarAlMouse();
     }
+
+    private void MirarAlMouse()
+    {
+        Ray ray = _camaraPrincipal.ScreenPointToRay(Input.mousePosition);
+        
+        Plane plano = new Plane(Vector3.up, Vector3.zero);
+        
+        float distance;
+
+        if (plano.Raycast(ray, out distance))
+        {
+            Vector3 target = ray.GetPoint(distance);
+            
+            Vector3 direction = target - transform.position;
+            
+            float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            
+            var rotacionFinal = Quaternion.Euler(0, rotation, 0);
+            _rigidbody.MoveRotation(rotacionFinal);
+        }
+    }
+
     private void Atacar()
     {
         _tiempoTranscurrido += Time.deltaTime;

@@ -74,6 +74,7 @@ MonoBehaviour:
   _puntoDeDisparo: {fileID: 3197649196769913070}
   _prefabBala: {fileID: 8019862414519829217, guid: dbf1e72266b94cc4c913b3b6216363d0, type: 3}
   _tiempoEntreDisparos: 5
+  _rigidbody: {fileID: 0}
 --- !u!114 &1393823614395675436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1662800151670404124}
+  _rigidbody: {fileID: 0}
+  _velocidad: 0
 --- !u!54 &-2270662227702425373
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139,14 +142,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8041533006617486744}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.94, y: 0.73, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8667281491082473508}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &3508104195288170360
 PrefabInstance:
   m_ObjectHideFlags: 0

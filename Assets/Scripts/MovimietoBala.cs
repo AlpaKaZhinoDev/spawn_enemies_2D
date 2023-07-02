@@ -6,6 +6,6 @@ public class MovimietoBala : MonoBehaviour
 
     private void Update()
     {
-        transform.position += Vector3.forward * _velocidad * Time.deltaTime;
+        transform.position += transform.forward * _velocidad * Time.deltaTime;
     }
 }
