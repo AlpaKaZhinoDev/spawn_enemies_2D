@@ -3,18 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Arbol
+  - Enemigo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Arboles
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Cajas
+  - Balas
+  - Enemigos
+  - Personaje
   - 
   - 
   - 

@@ -5,11 +5,14 @@ using UnityEngine;
 public class MaquinaDeEstadosPersonaje : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-
+    [SerializeField] private Rigidbody _rigidbody;
+    [SerializeField] private float _velocidad;
 
     private Estado _estadoActual;
-
     public Estado EstadoActual { get => _estadoActual; set => _estadoActual = value; }
+
+    private Vector3 _direction;
+
 
     private void Start()
     {
@@ -22,6 +25,16 @@ public class MaquinaDeEstadosPersonaje : MonoBehaviour
         ControlarEstado();
     }
 
+    private void FixedUpdate()
+    {
+        Mover();
+    }
+
+    private void Mover()
+    {
+        _rigidbody.MovePosition(transform.position + (_direction * (_velocidad * Time.fixedDeltaTime)));
+    }
+
     private void ControlarEntradaDelUsuario()
     {
         if(Input.GetKey(KeyCode.Space))
@@ -32,6 +45,11 @@ public class MaquinaDeEstadosPersonaje : MonoBehaviour
         {
             _estadoActual = Estado.Idle;
         }
+
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        _direction = new Vector3(horizontal, 0f, vertical).normalized;
     }
 
     private void ControlarEstado()

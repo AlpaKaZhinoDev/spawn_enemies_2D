@@ -17,7 +17,6 @@ public class Personaje : MonoBehaviour
         ActualizarMiPosicion();
         Atacar();
     }
-
     private void Atacar()
     {
         _tiempoTranscurrido += Time.deltaTime;
