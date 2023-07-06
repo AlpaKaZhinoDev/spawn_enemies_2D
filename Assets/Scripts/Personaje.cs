@@ -13,6 +13,9 @@ public class Personaje : MonoBehaviour
     [SerializeField] private float _tiempoEntreDisparos;
     [SerializeField] private Rigidbody _rigidbody;
 
+    private int _vida = 3;
+    public int Vida { get=> _vida; set => _vida = value;}
+
 
     private float _tiempoTranscurrido = 5f;
 

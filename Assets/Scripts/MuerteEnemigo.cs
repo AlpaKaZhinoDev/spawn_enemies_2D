@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 public class MuerteEnemigo : MonoBehaviour
 {
@@ -8,14 +7,30 @@ public class MuerteEnemigo : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Instantiate(_particulasMuerte, transform);
+        if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bala"))
+        {
+            MostrarParticulas();
+            Invoke("Destruir", 2f);
+        }
+    }
 
-        Invoke("Destruir", 2f);
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Bala"))
+        {
+            MostrarParticulas();
+            Invoke("Destruir", 2f);    
+        }
+    }
+
+    private void MostrarParticulas()
+    {
+        Instantiate(_particulasMuerte, transform.position + new Vector3(0f,5f,0f), Quaternion.identity);
+        gameObject.SetActive(false);
     }
 
     private void Destruir()
     {
         Destroy(gameObject);
     }
-
 }

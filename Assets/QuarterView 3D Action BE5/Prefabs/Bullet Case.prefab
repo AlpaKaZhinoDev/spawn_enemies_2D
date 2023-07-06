@@ -96,9 +96,10 @@ GameObject:
   - component: {fileID: -456740705120555901}
   - component: {fileID: 6224585819900601573}
   - component: {fileID: -7060513021356403129}
+  - component: {fileID: -8780526183027403620}
   m_Layer: 7
   m_Name: Bullet Case
-  m_TagString: Untagged
+  m_TagString: Bala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,3 +174,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8780526183027403620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8019862414519829217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3705df0f7c716641b32c16304183654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _particulasMuerte: {fileID: 6778444806109019817, guid: ee20a8e3e669a904ba6bd50bd3b531f9, type: 3}

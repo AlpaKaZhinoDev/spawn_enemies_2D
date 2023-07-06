@@ -3,16 +3,13 @@ using UnityEngine;
 
 public class ColisionEnemigo : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void Start()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            DestruirEnemigo();
-        }    
+        Invoke("Destruir", 3f);    
     }
 
-    private void DestruirEnemigo()
+    private void Destruir()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

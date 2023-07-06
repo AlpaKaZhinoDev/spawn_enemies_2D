@@ -8,7 +8,7 @@ public class MaquinaDeEstadosPersonaje : MonoBehaviour
     [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private float _velocidad;
 
-    private Estado _estadoActual;
+    [SerializeField] private Estado _estadoActual;
     public Estado EstadoActual { get => _estadoActual; set => _estadoActual = value; }
 
     private Vector3 _direction;
@@ -37,19 +37,32 @@ public class MaquinaDeEstadosPersonaje : MonoBehaviour
 
     private void ControlarEntradaDelUsuario()
     {
-        if(Input.GetKey(KeyCode.Space))
-        {
-            _estadoActual = Estado.Attack;
-        }
-        if(Input.GetKeyUp(KeyCode.Space))
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        _direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if(horizontal == 0f && vertical == 0)
         {
             _estadoActual = Estado.Idle;
         }
+        else
+        {
+            _estadoActual = Estado.Walk;
+        }
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        Atacar();
+    }
 
-        _direction = new Vector3(horizontal, 0f, vertical).normalized;
+    private void Atacar()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            _estadoActual = Estado.Attack;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            _estadoActual = Estado.Idle;
+        }
     }
 
     private void ControlarEstado()
@@ -62,9 +75,11 @@ public class MaquinaDeEstadosPersonaje : MonoBehaviour
             break;
             case Estado.Walk:
                 _animator.SetBool("EnMovimiento", true);
+                _animator.SetBool("EnAtaque", false);
             break;
             case Estado.Attack:
                 _animator.SetBool("EnAtaque", true);
+                _animator.SetBool("EnMovimiento", false);
             break;
         }
     }
