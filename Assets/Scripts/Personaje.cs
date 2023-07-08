@@ -13,6 +13,7 @@ public class Personaje : MonoBehaviour
     [SerializeField] private float _tiempoEntreDisparos;
     [SerializeField] private Rigidbody _rigidbody;
 
+
     private int _vida = 3;
     public int Vida { get=> _vida; set => _vida = value;}
 
@@ -71,5 +72,13 @@ public class Personaje : MonoBehaviour
     private void ActualizarMiPosicion()
     {
         _miPosicion.Posicion = transform.position;    
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Enemigo"))
+        {
+            _vida -= 1;
+        }
     }
 }

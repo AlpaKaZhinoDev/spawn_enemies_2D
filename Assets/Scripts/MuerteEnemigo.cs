@@ -9,6 +9,7 @@ public class MuerteEnemigo : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Bala"))
         {
+            GameManager.Instance.AumentarPuntuacion();
             MostrarParticulas();
             Invoke("Destruir", 2f);
         }

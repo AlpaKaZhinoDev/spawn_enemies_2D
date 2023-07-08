@@ -8,6 +8,10 @@ public class ParticulasBala : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.gameObject.CompareTag("Enemigo"))
+        {
+            GameManager.Instance.AumentarPuntuacion();
+        }
         if(other.gameObject.CompareTag("Arbol") || other.gameObject.CompareTag("Enemigo"))
         {
             Instantiate(_particulasMuerte, transform.position + new Vector3(0f,5f,0f), Quaternion.identity);

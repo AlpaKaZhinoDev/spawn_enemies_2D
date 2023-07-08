@@ -23,7 +23,9 @@ public class GeneracionDeEnemigos : MonoBehaviour
 
             MovimientoEnemigos enemigo = Instantiate(_prefabsEnemigo[ElegirEnemigoAleatorio()], posicionDeSpawn, Quaternion.identity);
 
-            yield return new WaitForSeconds(10f);
+            int aleatorio = Random.Range(3,10);
+
+            yield return new WaitForSeconds(aleatorio);
         }
     }
 
